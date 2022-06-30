@@ -35,6 +35,8 @@ public class CleverpyApplication {
         .authorizeRequests()
         .antMatchers(HttpMethod.POST, "/login")
         .permitAll()
+        .antMatchers(HttpMethod.POST, "/signup")
+        .permitAll()
         .anyRequest()
         .authenticated();
     }

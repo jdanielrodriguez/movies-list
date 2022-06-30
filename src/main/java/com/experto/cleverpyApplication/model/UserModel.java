@@ -1,5 +1,7 @@
 package com.experto.cleverpyapplication.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -22,6 +24,7 @@ public class UserModel {
   private String username;
 
   @NotNull
+  @JsonProperty(access = Access.WRITE_ONLY)
   private String password;
 
   private String token;
