@@ -10,7 +10,8 @@ import com.experto.cleverpyapplication.repository.FavoritesRespository;
 import com.experto.cleverpyapplication.repository.MoviesRespository;
 import com.experto.cleverpyapplication.repository.UserRespository;
 import com.experto.cleverpyapplication.security.JWTAuthorizationFilter;
-import java.util.List;
+import java.util.*;
+import java.util.stream.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -115,21 +116,33 @@ public class MoviesController {
     }
 
     fav.setUser(tempUsr);
-    Movies movie = new Movies();
+    Movies movie;
     try {
-      movie = moviesRespository.findById(Long.parseLong(movieId)).orElse(null);
+      movie =
+        moviesRespository.findById(Long.parseLong(movieId)).orElseThrow(null);
     } catch (NullPointerException e) {
-      if (movie == null) {
-        MovieSummary movieSummary = restTemplate.getForObject(
-          apiPath + "/movie/" + movieId + "?api_key=" + apiKey,
-          MovieSummary.class
-        );
-        movieSummary.setId((movieId));
-        movie = new Movies(movieSummary);
+      MovieSummary movieSummary = restTemplate.getForObject(
+        apiPath + "/movie/" + movieId + "?api_key=" + apiKey,
+        MovieSummary.class
+      );
+      movieSummary.setId(movieId);
+      movie = new Movies(movieSummary);
+      movie.setId(Long.parseLong(movieId));
+      movie = moviesRespository.save(movie);
+    }
+    fav.setMovie(movie);
+    Favorite[] favs = favoritesRespository.findByUserId(
+      Long.parseLong(getUserId(authentication))
+    );
+    if (favs.length > 0) {
+      List<Favorite> movFav = Arrays
+        .stream(favs)
+        .filter(f -> f.getMovie().getId() == Long.parseLong(movieId))
+        .collect(Collectors.toList());
+      if (movFav.size() > 0) {
+        return ResponseEntity.ok(movFav.get(0));
       }
     }
-
-    fav.setMovie(movie);
     return ResponseEntity.ok(favoritesRespository.save(fav));
   }
 

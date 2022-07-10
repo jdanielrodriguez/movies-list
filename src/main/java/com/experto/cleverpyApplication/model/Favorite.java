@@ -19,6 +19,7 @@ public class Favorite {
     cascade = CascadeType.ALL,
     fetch = FetchType.EAGER
   )
+  @JsonProperty(access = Access.WRITE_ONLY)
   private UserModel user;
 
   @ManyToOne(
