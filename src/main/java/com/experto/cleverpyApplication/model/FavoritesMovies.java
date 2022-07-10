@@ -1,17 +1,17 @@
 package com.experto.cleverpyapplication.model;
 
-public class ListModel {
+public class FavoritesMovies {
 
-  private Movies[] results;
+  private Favorite[] results;
   private int page;
   private int total_pages;
   private int total_results;
 
-  public Movies[] getResults() {
+  public Favorite[] getResults() {
     return results;
   }
 
-  public void setResults(Movies[] results) {
+  public void setResults(Favorite[] results) {
     this.results = results;
   }
 

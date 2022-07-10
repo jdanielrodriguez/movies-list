@@ -1,51 +1,75 @@
 package com.experto.cleverpyapplication.model;
 
-public class MovieSummary {
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-  private String id;
-  private String title;
+@Entity
+public class Movies {
+
+  @Id
+  private Long id;
+
+  @Column(nullable = true)
+  private boolean adult;
+
+  @Column(nullable = true)
+  private String backdrop_path;
+
+  @Column(nullable = true)
+  private String original_language;
+
+  @Column(nullable = true, columnDefinition = "TEXT")
+  private String original_title;
+
+  @Column(columnDefinition = "TEXT")
+  @NotNull
   private String overview;
 
-  private boolean adult;
-  private String backdrop_path;
-  private Long budget;
-  private String homepage;
-  private String imdb_id;
-  private String original_language;
-  private String original_title;
+  @Column(nullable = true)
   private Long popularity;
+
+  @Column(nullable = true)
   private String poster_path;
+
+  @Column(nullable = true)
   private String release_date;
-  private Long revenue;
-  private Long runtime;
-  private String status;
-  private String tagline;
+
+  @Column(nullable = true, columnDefinition = "TEXT")
+  private String title;
+
+  @Column(nullable = true)
   private boolean video;
+
+  @Column(nullable = true)
   private Long vote_average;
+
+  @Column(nullable = true)
   private Long vote_count;
 
-  public String getId() {
+  public Movies() {}
+
+  public Movies(MovieSummary summary) {
+    this.adult = summary.getAdult();
+    this.backdrop_path = summary.getBackdrop_path();
+    this.id = Long.parseLong(summary.getId());
+    this.original_language = summary.getOriginal_language();
+    this.original_title = summary.getOriginal_title();
+    this.overview = summary.getOverview();
+    this.popularity = summary.getPopularity();
+    this.poster_path = summary.getPoster_path();
+    this.release_date = summary.getRelease_date();
+    this.title = summary.getTitle();
+    this.video = summary.getVideo();
+    this.vote_average = summary.getVote_average();
+    this.vote_count = summary.getVote_count();
+  }
+
+  public Long getId() {
     return this.id;
   }
 
-  public void setId(String id) {
+  public void setId(Long id) {
     this.id = id;
-  }
-
-  public String getTitle() {
-    return this.title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getOverview() {
-    return this.overview;
-  }
-
-  public void setOverview(String overview) {
-    this.overview = overview;
   }
 
   public boolean isAdult() {
@@ -68,30 +92,6 @@ public class MovieSummary {
     this.backdrop_path = backdrop_path;
   }
 
-  public Long getBudget() {
-    return this.budget;
-  }
-
-  public void setBudget(Long budget) {
-    this.budget = budget;
-  }
-
-  public String getHomepage() {
-    return this.homepage;
-  }
-
-  public void setHomepage(String homepage) {
-    this.homepage = homepage;
-  }
-
-  public String getImdb_id() {
-    return this.imdb_id;
-  }
-
-  public void setImdb_id(String imdb_id) {
-    this.imdb_id = imdb_id;
-  }
-
   public String getOriginal_language() {
     return this.original_language;
   }
@@ -106,6 +106,14 @@ public class MovieSummary {
 
   public void setOriginal_title(String original_title) {
     this.original_title = original_title;
+  }
+
+  public String getOverview() {
+    return this.overview;
+  }
+
+  public void setOverview(String overview) {
+    this.overview = overview;
   }
 
   public Long getPopularity() {
@@ -132,36 +140,12 @@ public class MovieSummary {
     this.release_date = release_date;
   }
 
-  public Long getRevenue() {
-    return this.revenue;
+  public String getTitle() {
+    return this.title;
   }
 
-  public void setRevenue(Long revenue) {
-    this.revenue = revenue;
-  }
-
-  public Long getRuntime() {
-    return this.runtime;
-  }
-
-  public void setRuntime(Long runtime) {
-    this.runtime = runtime;
-  }
-
-  public String getStatus() {
-    return this.status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  public String getTagline() {
-    return this.tagline;
-  }
-
-  public void setTagline(String tagline) {
-    this.tagline = tagline;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public boolean isVideo() {
