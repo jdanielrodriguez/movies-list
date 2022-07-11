@@ -1,8 +1,8 @@
 # Cleverpy application test
-## Installation
+### Installation
 The application is encapsulated to be used with [docker-compose](https://docs.docker.com/compose/) so it is necessary to have the latest version of [Docker](https://www.docker.com/products/docker-desktop) installed, as well as [Node.js](https://nodejs.org/es/download/) to ensure that the deployments are done correctly.
 
-### Prerequisites
+## Prerequisites
 
 What things you need to install the software and how to install them
 
@@ -83,7 +83,7 @@ curl -s -X GET \
 ```
 To test the api you can use this link [http://localhost:8080](http://localhost:8080) or the POSTMAN collection including in this repo.
 
-### DEMO
+# DEMO
 The API is currently deployed at [vultr.com](vultr.com) you can try it at this link [http://108.61.119.125:8080](http://108.61.119.125:8080)
 
 ## Acknowledgment
