@@ -7,10 +7,10 @@ The application is encapsulated to be used with [docker-compose](https://docs.do
 What things you need to install the software and how to install them
 
 ```
-nodejs v => 8
+openjdk version "1.8.0_312"
 ```
 ```
-docker v => latest
+docker version "latest"
 ```
 ## BUILD the application 
 ```bash
@@ -81,7 +81,10 @@ curl -s -X POST \
 curl -s -X GET \
   http://localhost:8080/favorites
 ```
-To test the api you can use this link [http://localhost:8080](http://localhost:8080).
+To test the api you can use this link [http://localhost:8080](http://localhost:8080) or the POSTMAN collection including in this repo.
+
+### DEMO
+The API is currently deployed at [vultr.com](vultr.com) you can try it at this link [http://108.61.119.125:8080](http://108.61.119.125:8080)
 
 ## Acknowledgment
 In advance I appreciate the interest in my profile, I hope to meet the expectations of the position.
