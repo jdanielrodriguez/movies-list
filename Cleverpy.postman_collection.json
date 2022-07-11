@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "64a1266c-0d95-4a18-aa9c-3d99275a4903",
+		"name": "Cleverpy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"prueba\",\n    \"email\": \"prueba@prueba.com\",\n    \"password\": \"123123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/gettoken?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"gettoken"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "Get my Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/favorites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save As Favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/favorites/478456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"favorites",
+								"478456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Get Single Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies/453395",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"453395"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Movie Cast",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies/453395/cast",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"453395",
+								"cast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Cast Movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/cast/71580",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cast",
+								"71580"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTY1NjU2NzEwNSwiZXhwIjoxNjU2NjEwMzA1fQ.jl6nnDE7e-u6v0XJPFI9zQ3zJGgWTSbOOC3dJlKAyAK9c90w4_qItr8KWGk3hTyZKkogScNb71d2gSwXdvkk1Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/movies?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movies / Discovery",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JAVATOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/discover/movies?popularity=true&year_realese=2012",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"discover",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "popularity",
+									"value": "true"
+								},
+								{
+									"key": "year_realese",
+									"value": "2012"
+								},
+								{
+									"key": "highest",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TheMovieDB API",
+			"item": [
+				{
+					"name": "Api Movies Discover Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/discover/movie?api_key=ac3ad49c9e5cc0cde70fca0333919559&page=1&primary_release_year=2010",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"discover",
+								"movie"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "primary_release_year",
+									"value": "2010"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Api Movie Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/478456?api_key=ac3ad49c9e5cc0cde70fca0333919559&page=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"478456"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Api Movie Cast Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/844139/credits?api_key=ac3ad49c9e5cc0cde70fca0333919559",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"844139",
+								"credits"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Api Credits Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/credit/5af0ddfc0e0a26444f000107?api_key=ac3ad49c9e5cc0cde70fca0333919559",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"credit",
+								"5af0ddfc0e0a26444f000107"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Api Person Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/person/224513/credits?api_key=ac3ad49c9e5cc0cde70fca0333919559&page=1&start_date",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"person",
+								"224513",
+								"credits"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Api Credits Person Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/person/224513/movie_credits?api_key=ac3ad49c9e5cc0cde70fca0333919559",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"person",
+								"224513",
+								"movie_credits"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ac3ad49c9e5cc0cde70fca0333919559"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"prueba\",\n    \"password\": \"123123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "admin",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123123123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"prueba\",\n    \"email\": \"prueb32a@prueba.com\",\n    \"password\": \"123123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
