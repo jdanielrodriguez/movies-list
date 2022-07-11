@@ -1,5 +1,7 @@
 package com.experto.cleverpyapplication.controller;
 
+import com.experto.cleverpyapplication.model.CastList;
+import com.experto.cleverpyapplication.model.CastMoviesList;
 import com.experto.cleverpyapplication.model.Favorite;
 import com.experto.cleverpyapplication.model.FavoritesMovies;
 import com.experto.cleverpyapplication.model.ListModel;
@@ -79,21 +81,21 @@ public class MoviesController {
   }
 
   @GetMapping("/movies/{movieId}/cast")
-  Movies getCast(@PathVariable String movieId) {
-    MovieSummary movieSummary = restTemplate.getForObject(
-      apiPath + "/movie/" + movieId + "/cast?api_key=" + apiKey,
-      MovieSummary.class
+  CastList getCast(@PathVariable String movieId) {
+    CastList movieSummary = restTemplate.getForObject(
+      apiPath + "/movie/" + movieId + "/credits?api_key=" + apiKey,
+      CastList.class
     );
-    return new Movies(movieSummary);
+    return (movieSummary);
   }
 
-  @GetMapping("/movies/{movieId}/cast/{castId}")
-  Movies getSingleCast(@PathVariable String movieId) {
-    MovieSummary movieSummary = restTemplate.getForObject(
-      apiPath + "/movie/" + movieId + "?api_key=" + apiKey,
-      MovieSummary.class
+  @GetMapping("/cast/{castId}")
+  CastMoviesList getSingleCast(@PathVariable String castId) {
+    CastMoviesList movieSummary = restTemplate.getForObject(
+      apiPath + "/person/" + castId + "/credits?api_key=" + apiKey,
+      CastMoviesList.class
     );
-    return new Movies(movieSummary);
+    return (movieSummary);
   }
 
   @PostMapping("/favorites/{movieId}")
